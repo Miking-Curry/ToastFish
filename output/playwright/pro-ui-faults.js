@@ -1,0 +1,32 @@
+async page => {
+  let checks=0;const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const check=(value,name)=>{if(!value)throw new Error('FAIL: '+name);checks++;};
+  const words='**/api/words?**';
+  await page.getByRole('link',{name:'我的单词 Vocabulary'}).click();
+  await page.getByRole('heading',{name:'district',exact:true}).waitFor();
+  const fail=route=>route.fulfill({status:500,contentType:'application/json',body:JSON.stringify({error:'测试：词表服务暂不可用'})});
+  await page.route(words,fail,{times:1});await page.reload();
+  await page.getByRole('alert').getByText('测试：词表服务暂不可用',{exact:true}).waitFor();
+  check(await page.getByRole('heading',{name:'district',exact:true}).count()===0,'failed list does not show stale detail');
+  await page.getByRole('button',{name:'重新加载',exact:true}).click();await page.getByRole('heading',{name:'district',exact:true}).waitFor();check(true,'retry restores list');
+  const badJson=route=>route.fulfill({status:200,contentType:'text/html',body:'<html>not an API response</html>'});
+  await page.route(words,badJson,{times:1});await page.reload();await page.getByRole('alert').getByText(/无法识别的数据/).waitFor();
+  check(await page.getByRole('heading',{name:'district',exact:true}).count()===0,'invalid JSON never becomes fake data');
+  await page.getByRole('button',{name:'重新加载',exact:true}).click();await page.getByRole('heading',{name:'district',exact:true}).waitFor();
+  const detailFail=route=>route.fulfill({status:500,contentType:'application/json',body:JSON.stringify({error:'详情暂不可用'})});
+  await page.route('**/api/words/detail?**',detailFail,{times:1});await page.reload();
+  await page.getByRole('alert').getByText(/词表已加载，但详情暂不可用/).waitFor();
+  check(await page.getByRole('checkbox',{name:'选择 district',exact:true}).isVisible(),'detail failure preserves usable list');
+  await page.getByRole('button',{name:'memory',exact:true}).click();await page.getByRole('heading',{name:'memory',exact:true}).waitFor();check(true,'another word works after detail failure');
+  const noAuth=route=>route.fulfill({status:401,contentType:'application/json',body:JSON.stringify({error:'管理页凭据已失效，请从托盘重新打开。'})});
+  await page.route('**/api/**',noAuth);await page.reload();await page.getByRole('alert').getByText(/凭据已失效/).waitFor();
+  check(await page.getByRole('button',{name:'通知背词',exact:true}).isDisabled(),'unauthorized cannot start learning');
+  await page.unroute('**/api/**',noAuth);await page.reload();await page.getByRole('heading',{name:'district',exact:true}).waitFor();check(true,'authorized retry after session refresh');
+  const overviewFail=route=>route.fulfill({status:404,contentType:'application/json',body:JSON.stringify({error:'接口不存在'})});
+  await page.route('**/api/reviews/overview?**',overviewFail,{times:1});await page.getByRole('link',{name:'复习与错词 Review'}).click();
+  await page.getByText(/时间分布需要配套的新版本本地服务/).waitFor();
+  check(await page.getByRole('checkbox',{name:'选择 district',exact:true}).isVisible(),'old backend still supports word list');
+  await page.getByRole('button',{name:'重试',exact:true}).click();await page.getByRole('button',{name:'明天，8个词',exact:true}).waitFor();check(true,'overview retry recovers');
+  check(errors.length===0,'faults produce no JS runtime errors');
+  page.__tfFaultResults={passed:checks,errors,databaseAccess:false};return page.__tfFaultResults;
+}

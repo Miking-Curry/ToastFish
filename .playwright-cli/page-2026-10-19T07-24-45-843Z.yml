@@ -1,0 +1,89 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ToastFish 首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: tf
+      - generic [ref=e7]:
+        - text: ToastFish
+        - generic [ref=e8]: 一点一滴，记住更多
+    - navigation "管理导航" [ref=e9]:
+      - link "◉ 学习首页" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: ◉
+        - text: 学习首页
+      - link "▤ 学习记录" [ref=e12] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=e13]: ▤
+        - text: 学习记录
+      - link "Aa 我的单词" [ref=e14] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=e15]: Aa
+        - text: 我的单词
+      - link "↻ 复习与错词" [ref=e16] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=e17]: ↻
+        - text: 复习与错词
+      - link "⚙ 词库与设置" [ref=e18] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e19]: ⚙
+        - text: 词库与设置
+    - generic [ref=e20]:
+      - text: 仅本机 · 数据保存在电脑
+      - paragraph [ref=e22]: 通知中学习，页面里回顾。
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: YOUR LEARNING SPACE
+        - heading "我的单词" [level=1] [ref=e278]
+        - paragraph [ref=e28]: 查找词义，也看看你与它的学习记录。
+      - generic [ref=e29]: 英语学习管理
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - text: 英语词库
+        - combobox "英语词库" [ref=e282]:
+          - option "四级核心词汇" [selected]
+          - option "我的英语"
+      - generic [ref=e283]:
+        - text: 搜索单词或释义
+        - textbox "搜索单词或释义" [ref=e284]:
+          - /placeholder: 例如 district / 地区
+          - text: district
+      - generic [ref=e285]:
+        - text: 学习状态
+        - combobox "学习状态" [ref=e286]:
+          - option "全部状态" [selected]
+          - option "未学习"
+          - option "学习中"
+          - option "复习中"
+          - option "专项词表"
+      - button "搜索" [active] [ref=e287] [cursor=pointer]
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - heading "你的单词 1 个" [level=2] [ref=e440]
+        - button "学习选中 0 个 →" [disabled] [ref=e291]
+      - table [ref=e293]:
+        - rowgroup [ref=e294]:
+          - row [ref=e295]:
+            - columnheader "选择" [ref=e296]
+            - columnheader "单词 / 释义" [ref=e298]
+            - columnheader "状态" [ref=e299]
+            - columnheader "下次复习" [ref=e300]
+            - columnheader "测验错次" [ref=e301]
+            - columnheader "专项词表" [ref=e302]
+        - rowgroup [ref=e303]:
+          - row [ref=e304]:
+            - cell [ref=e305]:
+              - checkbox "选择 district" [ref=e306]
+            - cell "district 测试词义 1" [ref=e307]:
+              - button "district" [ref=e308] [cursor=pointer]
+              - generic [ref=e309]: 测试词义 1
+            - cell "未学习" [ref=e310]
+            - cell "—" [ref=e311]
+            - cell "1" [ref=e312]
+            - cell [ref=e313]:
+              - button "移出" [ref=e314] [cursor=pointer]
+      - generic [ref=e436]:
+        - button "上一页" [disabled] [ref=e437]
+        - generic [ref=e438]: 第 1 / 1 页
+        - button "下一页" [disabled] [ref=e439]
+    - generic [ref=e103]: ToastFish · 学习记录从启用管理功能后开始积累。日语、五十音及自定义内容仍使用托盘入口。

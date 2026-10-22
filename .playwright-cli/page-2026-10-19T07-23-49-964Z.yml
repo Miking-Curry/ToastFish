@@ -1,0 +1,216 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ToastFish 首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: tf
+      - generic [ref=e7]:
+        - text: ToastFish
+        - generic [ref=e8]: 一点一滴，记住更多
+    - navigation "管理导航" [ref=e9]:
+      - link "◉ 学习首页" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: ◉
+        - text: 学习首页
+      - link "▤ 学习记录" [ref=e12] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=e13]: ▤
+        - text: 学习记录
+      - link "Aa 我的单词" [ref=e14] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=e15]: Aa
+        - text: 我的单词
+      - link "↻ 复习与错词" [ref=e16] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=e17]: ↻
+        - text: 复习与错词
+      - link "⚙ 词库与设置" [ref=e18] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e19]: ⚙
+        - text: 词库与设置
+    - generic [ref=e20]:
+      - text: 仅本机 · 数据保存在电脑
+      - paragraph [ref=e22]: 通知中学习，页面里回顾。
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: YOUR LEARNING SPACE
+        - heading "学习记录" [level=1] [ref=e104]
+        - paragraph [ref=e28]: 每一次记住，都有迹可循。
+      - generic [ref=e29]: 英语学习管理
+    - generic [ref=e106]:
+      - generic [ref=e107]:
+        - text: 开始日期
+        - textbox "开始日期" [ref=e108]: 2026-10-13
+      - generic [ref=e109]:
+        - text: 结束日期
+        - textbox "结束日期" [ref=e110]: 2026-10-19
+      - generic [ref=e111]:
+        - text: 词库
+        - combobox "词库" [ref=e112]:
+          - option "全部英语词库" [selected]
+          - option "四级核心词汇"
+          - option "我的英语"
+      - button "查询" [ref=e113] [cursor=pointer]
+      - button "今天" [ref=e114] [cursor=pointer]
+      - button "本周" [ref=e115] [cursor=pointer]
+      - button "导出 Excel" [ref=e116] [cursor=pointer]
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - heading "学习足迹 10 条" [level=2] [ref=e119]
+        - generic [ref=e120]: 重复评分会逐次记录，统计按词去重
+      - table [ref=e122]:
+        - rowgroup [ref=e123]:
+          - row [ref=e124]:
+            - columnheader "时间" [ref=e125]
+            - columnheader "单词" [ref=e126]
+            - columnheader "词库" [ref=e127]
+            - columnheader "类型" [ref=e128]
+            - columnheader "结果" [ref=e129]
+            - columnheader "轮次" [ref=e130]
+        - rowgroup [ref=e131]:
+          - row [ref=e132]:
+            - cell "2026/10/19 15:19:36" [ref=e133]
+            - cell "personal2 个人单词2" [ref=e134]:
+              - strong [ref=e135]: personal2
+              - generic [ref=e136]: 个人单词2
+            - cell "我的英语" [ref=e137]
+            - cell "巩固" [ref=e138]
+            - cell "暂时记住" [ref=e139]
+            - cell [ref=e140]:
+              - button "查看本轮" [active] [ref=e141] [cursor=pointer]
+          - row [ref=e142]:
+            - cell "2026/10/19 15:19:36" [ref=e143]
+            - cell "personal2 个人单词2" [ref=e144]:
+              - strong [ref=e145]: personal2
+              - generic [ref=e146]: 个人单词2
+            - cell "我的英语" [ref=e147]
+            - cell "新学" [ref=e148]
+            - cell "暂时记住" [ref=e149]
+            - cell [ref=e150]:
+              - button "查看本轮" [ref=e151] [cursor=pointer]
+          - row [ref=e152]:
+            - cell "2026/10/19 15:19:36" [ref=e153]
+            - cell "district 测试词义 1" [ref=e154]:
+              - strong [ref=e155]: district
+              - generic [ref=e156]: 测试词义 1
+            - cell "四级核心词汇" [ref=e157]
+            - cell "测验" [ref=e158]
+            - cell "答对" [ref=e159]
+            - cell [ref=e160]:
+              - button "查看本轮" [ref=e161] [cursor=pointer]
+          - row [ref=e162]:
+            - cell "2026/10/19 15:19:36" [ref=e163]
+            - cell "district 测试词义 1" [ref=e164]:
+              - strong [ref=e165]: district
+              - generic [ref=e166]: 测试词义 1
+            - cell "四级核心词汇" [ref=e167]
+            - cell "测验" [ref=e168]
+            - cell "答错" [ref=e169]
+            - cell [ref=e170]:
+              - button "查看本轮" [ref=e171] [cursor=pointer]
+          - row [ref=e172]:
+            - cell "2026/10/19 15:19:36" [ref=e173]
+            - cell "district 测试词义 1" [ref=e174]:
+              - strong [ref=e175]: district
+              - generic [ref=e176]: 测试词义 1
+            - cell "四级核心词汇" [ref=e177]
+            - cell "巩固" [ref=e178]
+            - cell "暂时记住" [ref=e179]
+            - cell [ref=e180]:
+              - button "查看本轮" [ref=e181] [cursor=pointer]
+          - row [ref=e182]:
+            - cell "2026/10/19 15:19:36" [ref=e183]
+            - cell "district 测试词义 1" [ref=e184]:
+              - strong [ref=e185]: district
+              - generic [ref=e186]: 测试词义 1
+            - cell "四级核心词汇" [ref=e187]
+            - cell "新学" [ref=e188]
+            - cell "暂时记住" [ref=e189]
+            - cell [ref=e190]:
+              - button "查看本轮" [ref=e191] [cursor=pointer]
+          - row [ref=e192]:
+            - cell "2026/10/19 15:19:36" [ref=e193]
+            - cell "future 测试词义 11" [ref=e194]:
+              - strong [ref=e195]: future
+              - generic [ref=e196]: 测试词义 11
+            - cell "四级核心词汇" [ref=e197]
+            - cell "新学" [ref=e198]
+            - cell "已经牢记" [ref=e199]
+            - cell [ref=e200]:
+              - button "查看本轮" [ref=e201] [cursor=pointer]
+          - row [ref=e202]:
+            - cell "2026/10/19 15:19:36" [ref=e203]
+            - cell "forest 测试词义 9" [ref=e204]:
+              - strong [ref=e205]: forest
+              - generic [ref=e206]: 测试词义 9
+            - cell "四级核心词汇" [ref=e207]
+            - cell "新学" [ref=e208]
+            - cell "已经牢记" [ref=e209]
+            - cell [ref=e210]:
+              - button "查看本轮" [ref=e211] [cursor=pointer]
+          - row [ref=e212]:
+            - cell "2026/10/19 15:19:36" [ref=e213]
+            - cell "journey 测试词义 2" [ref=e214]:
+              - strong [ref=e215]: journey
+              - generic [ref=e216]: 测试词义 2
+            - cell "四级核心词汇" [ref=e217]
+            - cell "新学" [ref=e218]
+            - cell "已经牢记" [ref=e219]
+            - cell [ref=e220]:
+              - button "查看本轮" [ref=e221] [cursor=pointer]
+          - row [ref=e222]:
+            - cell "2026/10/19 15:19:36" [ref=e223]
+            - cell "memory 测试词义 3" [ref=e224]:
+              - strong [ref=e225]: memory
+              - generic [ref=e226]: 测试词义 3
+            - cell "四级核心词汇" [ref=e227]
+            - cell "新学" [ref=e228]
+            - cell "已经牢记" [ref=e229]
+            - cell [ref=e230]:
+              - button "查看本轮" [ref=e231] [cursor=pointer]
+      - generic [ref=e232]:
+        - button "上一页" [disabled] [ref=e233]
+        - generic [ref=e234]: 第 1 / 1 页
+        - button "下一页" [disabled] [ref=e235]
+    - generic [ref=e236]:
+      - heading "这段时间的学习轮次" [level=2] [ref=e237]
+      - generic [ref=e238]:
+        - button "我的英语 2026/10/19 15:19:36 已完成" [ref=e239] [cursor=pointer]:
+          - generic [ref=e240]:
+            - strong [ref=e241]: 我的英语
+            - generic [ref=e242]: 2026/10/19 15:19:36
+          - generic [ref=e243]: 已完成
+        - button "四级核心词汇 2026/10/19 15:19:36 已结束" [ref=e244] [cursor=pointer]:
+          - generic [ref=e245]:
+            - strong [ref=e246]: 四级核心词汇
+            - generic [ref=e247]: 2026/10/19 15:19:36
+          - generic [ref=e248]: 已结束
+        - button "四级核心词汇 2026/10/19 15:19:36 已完成" [ref=e249] [cursor=pointer]:
+          - generic [ref=e250]:
+            - strong [ref=e251]: 四级核心词汇
+            - generic [ref=e252]: 2026/10/19 15:19:36
+          - generic [ref=e253]: 已完成
+        - button "四级核心词汇 2026/10/19 15:19:36 已结束" [ref=e254] [cursor=pointer]:
+          - generic [ref=e255]:
+            - strong [ref=e256]: 四级核心词汇
+            - generic [ref=e257]: 2026/10/19 15:19:36
+          - generic [ref=e258]: 已结束
+    - generic [ref=e259]:
+      - generic [ref=e260]:
+        - heading "本轮词表 · 已完成" [level=2] [ref=e261]
+        - button "收起" [ref=e262] [cursor=pointer]
+      - table [ref=e264]:
+        - rowgroup [ref=e265]:
+          - row [ref=e266]:
+            - columnheader "单词" [ref=e267]
+            - columnheader "翻译" [ref=e268]
+            - columnheader "已操作" [ref=e269]
+            - columnheader "学习状态" [ref=e270]
+        - rowgroup [ref=e271]:
+          - row [ref=e272]:
+            - cell "personal2" [ref=e273]
+            - cell "个人单词2" [ref=e274]
+            - cell "是" [ref=e275]
+            - cell "进入复习" [ref=e276]
+      - paragraph [ref=e277]: 阶段：complete · 2 次操作 · 1 个词因缺少干扰选项未测验
+    - generic [ref=e103]: ToastFish · 学习记录从启用管理功能后开始积累。日语、五十音及自定义内容仍使用托盘入口。

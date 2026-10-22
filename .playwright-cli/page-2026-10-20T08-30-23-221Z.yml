@@ -1,0 +1,47 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ToastFish 首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: tf
+      - generic [ref=e7]:
+        - text: ToastFish
+        - generic [ref=e8]: 工作台
+        - generic [ref=e9]: 一点一滴，记住更多
+    - generic [ref=e10]: 学习空间
+    - navigation "管理导航" [ref=e11]:
+      - link "学习首页" [ref=e12] [cursor=pointer]:
+        - /url: /
+      - link "学习记录" [ref=e16] [cursor=pointer]:
+        - /url: /records
+      - link "我的单词" [ref=e20] [cursor=pointer]:
+        - /url: /words
+      - link "复习与错词" [ref=e24] [cursor=pointer]:
+        - /url: /reviews
+      - link "词库与设置" [ref=e28] [cursor=pointer]:
+        - /url: /settings
+    - generic [ref=e32]:
+      - strong [ref=e35]: 数据留在本机
+      - paragraph [ref=e36]: 当前使用 SM2plus 调度。评分来自真实学习，不使用模拟保持率。
+      - text: WINDOWS NATIVE NOTIFICATIONS
+    - generic [ref=e37]: 本地服务已连接
+  - main [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - text: YOUR LEARNING SPACE
+          - generic [ref=e43]: SM2plus
+        - heading "学习首页" [active] [level=1] [ref=e44]
+        - paragraph [ref=e45]: 从上次停下的地方，继续。
+      - generic [ref=e46]:
+        - generic [ref=e47]: 尚无未完成轮次
+        - button "通知背词" [ref=e49] [cursor=pointer]
+    - alert [ref=e52]:
+      - generic [ref=e53]: 本地服务返回了无法识别的数据，请重新打开管理页。
+      - button "关闭错误提示" [ref=e54] [cursor=pointer]
+    - generic [ref=e57]:
+      - heading "正在打开你的学习空间" [level=2] [ref=e60]
+      - paragraph [ref=e61]: 尚未取得有效数据时不会显示示例统计。
+      - button "重新加载" [ref=e62] [cursor=pointer]
+    - generic [ref=e63]:
+      - text: ToastFish · 本地学习工作台
+      - generic [ref=e64]: 记录从启用管理功能后开始积累；日语、五十音及自定义内容请使用托盘入口。

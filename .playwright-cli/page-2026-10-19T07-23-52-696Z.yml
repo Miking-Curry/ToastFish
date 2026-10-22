@@ -1,0 +1,209 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ToastFish 首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: tf
+      - generic [ref=e7]:
+        - text: ToastFish
+        - generic [ref=e8]: 一点一滴，记住更多
+    - navigation "管理导航" [ref=e9]:
+      - link "◉ 学习首页" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: ◉
+        - text: 学习首页
+      - link "▤ 学习记录" [ref=e12] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=e13]: ▤
+        - text: 学习记录
+      - link "Aa 我的单词" [active] [ref=e14] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=e15]: Aa
+        - text: 我的单词
+      - link "↻ 复习与错词" [ref=e16] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=e17]: ↻
+        - text: 复习与错词
+      - link "⚙ 词库与设置" [ref=e18] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e19]: ⚙
+        - text: 词库与设置
+    - generic [ref=e20]:
+      - text: 仅本机 · 数据保存在电脑
+      - paragraph [ref=e22]: 通知中学习，页面里回顾。
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: YOUR LEARNING SPACE
+        - heading "我的单词" [level=1] [ref=e278]
+        - paragraph [ref=e28]: 查找词义，也看看你与它的学习记录。
+      - generic [ref=e29]: 英语学习管理
+    - generic [ref=e280]:
+      - generic [ref=e281]:
+        - text: 英语词库
+        - combobox "英语词库" [ref=e282]:
+          - option "四级核心词汇" [selected]
+          - option "我的英语"
+      - generic [ref=e283]:
+        - text: 搜索单词或释义
+        - textbox "搜索单词或释义" [ref=e284]:
+          - /placeholder: 例如 district / 地区
+      - generic [ref=e285]:
+        - text: 学习状态
+        - combobox "学习状态" [ref=e286]:
+          - option "全部状态" [selected]
+          - option "未学习"
+          - option "学习中"
+          - option "复习中"
+          - option "专项词表"
+      - button "搜索" [ref=e287] [cursor=pointer]
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - heading "你的单词 12 个" [level=2] [ref=e290]
+        - button "学习选中 0 个 →" [disabled] [ref=e291]
+      - table [ref=e293]:
+        - rowgroup [ref=e294]:
+          - row [ref=e295]:
+            - columnheader "选择" [ref=e296]
+            - columnheader "单词 / 释义" [ref=e298]
+            - columnheader "状态" [ref=e299]
+            - columnheader "下次复习" [ref=e300]
+            - columnheader "测验错次" [ref=e301]
+            - columnheader "专项词表" [ref=e302]
+        - rowgroup [ref=e303]:
+          - row [ref=e304]:
+            - cell [ref=e305]:
+              - checkbox "选择 district" [ref=e306]
+            - cell "district 测试词义 1" [ref=e307]:
+              - button "district" [ref=e308] [cursor=pointer]
+              - generic [ref=e309]: 测试词义 1
+            - cell "未学习" [ref=e310]
+            - cell "—" [ref=e311]
+            - cell "1" [ref=e312]
+            - cell [ref=e313]:
+              - button "移出" [ref=e314] [cursor=pointer]
+          - row [ref=e315]:
+            - cell [ref=e316]:
+              - checkbox "选择 journey" [ref=e317]
+            - cell "journey 测试词义 2" [ref=e318]:
+              - button "journey" [ref=e319] [cursor=pointer]
+              - generic [ref=e320]: 测试词义 2
+            - cell "未学习" [ref=e321]
+            - cell "—" [ref=e322]
+            - cell "0" [ref=e323]
+            - cell [ref=e324]:
+              - button "加入" [ref=e325] [cursor=pointer]
+          - row [ref=e326]:
+            - cell [ref=e327]:
+              - checkbox "选择 memory" [ref=e328]
+            - cell "memory 测试词义 3" [ref=e329]:
+              - button "memory" [ref=e330] [cursor=pointer]
+              - generic [ref=e331]: 测试词义 3
+            - cell "未学习" [ref=e332]
+            - cell "—" [ref=e333]
+            - cell "0" [ref=e334]
+            - cell [ref=e335]:
+              - button "加入" [ref=e336] [cursor=pointer]
+          - row [ref=e337]:
+            - cell [ref=e338]:
+              - checkbox "选择 garden" [ref=e339]
+            - cell "garden 测试词义 4" [ref=e340]:
+              - button "garden" [ref=e341] [cursor=pointer]
+              - generic [ref=e342]: 测试词义 4
+            - cell "未学习" [ref=e343]
+            - cell "—" [ref=e344]
+            - cell "0" [ref=e345]
+            - cell [ref=e346]:
+              - button "加入" [ref=e347] [cursor=pointer]
+          - row [ref=e348]:
+            - cell [ref=e349]:
+              - checkbox "选择 river" [ref=e350]
+            - cell "river 测试词义 5" [ref=e351]:
+              - button "river" [ref=e352] [cursor=pointer]
+              - generic [ref=e353]: 测试词义 5
+            - cell "未学习" [ref=e354]
+            - cell "—" [ref=e355]
+            - cell "0" [ref=e356]
+            - cell [ref=e357]:
+              - button "加入" [ref=e358] [cursor=pointer]
+          - row [ref=e359]:
+            - cell [ref=e360]:
+              - checkbox "选择 quiet" [ref=e361]
+            - cell "quiet 测试词义 6" [ref=e362]:
+              - button "quiet" [ref=e363] [cursor=pointer]
+              - generic [ref=e364]: 测试词义 6
+            - cell "未学习" [ref=e365]
+            - cell "—" [ref=e366]
+            - cell "0" [ref=e367]
+            - cell [ref=e368]:
+              - button "加入" [ref=e369] [cursor=pointer]
+          - row [ref=e370]:
+            - cell [ref=e371]:
+              - checkbox "选择 window" [ref=e372]
+            - cell "window 测试词义 7" [ref=e373]:
+              - button "window" [ref=e374] [cursor=pointer]
+              - generic [ref=e375]: 测试词义 7
+            - cell "未学习" [ref=e376]
+            - cell "—" [ref=e377]
+            - cell "0" [ref=e378]
+            - cell [ref=e379]:
+              - button "加入" [ref=e380] [cursor=pointer]
+          - row [ref=e381]:
+            - cell [ref=e382]:
+              - checkbox "选择 planet" [ref=e383]
+            - cell "planet 测试词义 8" [ref=e384]:
+              - button "planet" [ref=e385] [cursor=pointer]
+              - generic [ref=e386]: 测试词义 8
+            - cell "未学习" [ref=e387]
+            - cell "—" [ref=e388]
+            - cell "0" [ref=e389]
+            - cell [ref=e390]:
+              - button "加入" [ref=e391] [cursor=pointer]
+          - row [ref=e392]:
+            - cell [ref=e393]:
+              - checkbox "选择 forest" [ref=e394]
+            - cell "forest 测试词义 9" [ref=e395]:
+              - button "forest" [ref=e396] [cursor=pointer]
+              - generic [ref=e397]: 测试词义 9
+            - cell "未学习" [ref=e398]
+            - cell "—" [ref=e399]
+            - cell "0" [ref=e400]
+            - cell [ref=e401]:
+              - button "加入" [ref=e402] [cursor=pointer]
+          - row [ref=e403]:
+            - cell [ref=e404]:
+              - checkbox "选择 cloud" [ref=e405]
+            - cell "cloud 测试词义 10" [ref=e406]:
+              - button "cloud" [ref=e407] [cursor=pointer]
+              - generic [ref=e408]: 测试词义 10
+            - cell "未学习" [ref=e409]
+            - cell "—" [ref=e410]
+            - cell "0" [ref=e411]
+            - cell [ref=e412]:
+              - button "加入" [ref=e413] [cursor=pointer]
+          - row [ref=e414]:
+            - cell [ref=e415]:
+              - checkbox "选择 future" [ref=e416]
+            - cell "future 测试词义 11" [ref=e417]:
+              - button "future" [ref=e418] [cursor=pointer]
+              - generic [ref=e419]: 测试词义 11
+            - cell "未学习" [ref=e420]
+            - cell "—" [ref=e421]
+            - cell "0" [ref=e422]
+            - cell [ref=e423]:
+              - button "加入" [ref=e424] [cursor=pointer]
+          - row [ref=e425]:
+            - cell [ref=e426]:
+              - checkbox "选择 review" [ref=e427]
+            - cell "review 测试词义 12" [ref=e428]:
+              - button "review" [ref=e429] [cursor=pointer]
+              - generic [ref=e430]: 测试词义 12
+            - cell "未学习" [ref=e431]
+            - cell "—" [ref=e432]
+            - cell "0" [ref=e433]
+            - cell [ref=e434]:
+              - button "加入" [ref=e435] [cursor=pointer]
+      - generic [ref=e436]:
+        - button "上一页" [disabled] [ref=e437]
+        - generic [ref=e438]: 第 1 / 1 页
+        - button "下一页" [disabled] [ref=e439]
+    - generic [ref=e103]: ToastFish · 学习记录从启用管理功能后开始积累。日语、五十音及自定义内容仍使用托盘入口。

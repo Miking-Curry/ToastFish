@@ -1,0 +1,288 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - link "ToastFish 首页" [ref=f1e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=f1e6]: tf
+      - generic [ref=f1e7]:
+        - text: ToastFish
+        - generic [ref=f1e8]: 工作台
+        - generic [ref=f1e9]: 一点一滴，记住更多
+    - generic [ref=f1e10]: 学习空间
+    - navigation "管理导航" [ref=f1e11]:
+      - link "学习首页 Overview" [ref=f1e12] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e15]: 学习首页
+        - generic [ref=f1e16]: Overview
+      - link "学习记录 History" [ref=f1e17] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=f1e20]: 学习记录
+        - generic [ref=f1e21]: History
+      - link "我的单词 Vocabulary" [ref=f1e22] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=f1e25]: 我的单词
+        - generic [ref=f1e26]: Vocabulary
+      - link "复习与错词 Review" [ref=f1e27] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=f1e30]: 复习与错词
+        - generic [ref=f1e31]: Review
+      - link "词库与设置 Settings" [ref=f1e32] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f1e35]: 词库与设置
+        - generic [ref=f1e36]: Settings
+    - generic [ref=f1e37]:
+      - strong [ref=f1e40]: 数据留在本机
+      - paragraph [ref=f1e41]: 当前使用 SM2plus 调度。评分来自真实学习，不使用模拟保持率。
+      - text: WINDOWS NATIVE NOTIFICATIONS
+    - generic [ref=f1e42]: 本地服务已连接
+  - main [ref=f1e44]:
+    - generic [ref=f1e45]:
+      - generic [ref=f1e46]:
+        - generic [ref=f1e47]:
+          - text: YOUR LEARNING SPACE
+          - generic [ref=f1e48]: SM2plus
+        - heading "复习与错词" [active] [level=1] [ref=f1e797]
+        - paragraph [ref=f1e50]: 把时间花在需要巩固的地方。
+      - generic [ref=f1e51]:
+        - generic [ref=f1e52]: 尚无未完成轮次
+        - button "通知背词" [ref=f1e54] [cursor=pointer]
+    - generic [ref=f1e798]:
+      - generic [ref=f1e799]:
+        - generic [ref=f1e800]:
+          - text: REVIEW TIMELINE
+          - heading "把复习，安排在到期之前" [level=2] [ref=f1e801]
+          - paragraph [ref=f1e802]: 按实际下次复习时间分布，点击节点筛选单词。
+        - generic [ref=f1e803]:
+          - text: SM2plus
+          - generic [ref=f1e804]: 当前调度算法
+      - generic [ref=f1e805]:
+        - generic [ref=f1e806]:
+          - group "当前词库的复习到期时间分布，纵轴表示单词数量" [ref=f1e807]:
+            - button "已到期，8个词" [ref=f1e810] [cursor=pointer]:
+              - generic [ref=f1e813]: "8"
+              - generic [ref=f1e814]: 已到期
+            - button "今天，8个词" [ref=f1e815] [cursor=pointer]:
+              - generic [ref=f1e818]: "8"
+              - generic [ref=f1e819]: 今天
+            - button "明天，8个词" [ref=f1e820] [cursor=pointer]:
+              - generic [ref=f1e823]: "8"
+              - generic [ref=f1e824]: 明天
+            - button "2～6天，8个词" [ref=f1e825] [cursor=pointer]:
+              - generic [ref=f1e828]: "8"
+              - generic [ref=f1e829]: 2～6天
+            - button "7～13天，8个词" [ref=f1e830] [cursor=pointer]:
+              - generic [ref=f1e833]: "8"
+              - generic [ref=f1e834]: 7～13天
+            - button "14～30天，8个词" [ref=f1e835] [cursor=pointer]:
+              - generic [ref=f1e838]: "8"
+              - generic [ref=f1e839]: 14～30天
+            - button "31天+，7个词" [ref=f1e840] [cursor=pointer]:
+              - generic [ref=f1e843]: "7"
+              - generic [ref=f1e844]: 31天+
+            - button "未排期，7个词" [ref=f1e845] [cursor=pointer]:
+              - generic [ref=f1e848]: "7"
+              - generic [ref=f1e849]: 未排期
+          - paragraph [ref=f1e850]: 纵轴：单词数量 · 不是遗忘概率或个人记忆保持率预测。
+        - generic [ref=f1e851]:
+          - text: 当前词库进入复习
+          - strong [ref=f1e852]: 62 个词
+          - paragraph [ref=f1e853]: 完整词库汇总，不只统计当前列表页。
+          - text: 更新于 2026/10/20 16:33:18
+      - generic "复习到期时间筛选" [ref=f1e854]:
+        - button "已到期 8" [ref=f1e855] [cursor=pointer]:
+          - generic [ref=f1e856]: 已到期
+          - strong [ref=f1e857]: "8"
+        - button "今天 8" [ref=f1e858] [cursor=pointer]:
+          - generic [ref=f1e859]: 今天
+          - strong [ref=f1e860]: "8"
+        - button "明天 8" [ref=f1e861] [cursor=pointer]:
+          - generic [ref=f1e862]: 明天
+          - strong [ref=f1e863]: "8"
+        - button "2～6天 8" [ref=f1e864] [cursor=pointer]:
+          - generic [ref=f1e865]: 2～6天
+          - strong [ref=f1e866]: "8"
+        - button "7～13天 8" [ref=f1e867] [cursor=pointer]:
+          - generic [ref=f1e868]: 7～13天
+          - strong [ref=f1e869]: "8"
+        - button "14～30天 8" [ref=f1e870] [cursor=pointer]:
+          - generic [ref=f1e871]: 14～30天
+          - strong [ref=f1e872]: "8"
+        - button "31天+ 7" [ref=f1e873] [cursor=pointer]:
+          - generic [ref=f1e874]: 31天+
+          - strong [ref=f1e875]: "7"
+        - button "未排期 7" [ref=f1e876] [cursor=pointer]:
+          - generic [ref=f1e877]: 未排期
+          - strong [ref=f1e878]: "7"
+    - generic [ref=f1e879]:
+      - generic "复习类型" [ref=f1e880]:
+        - button "全部计划" [ref=f1e881] [cursor=pointer]
+        - button "到期复习" [pressed] [ref=f1e882] [cursor=pointer]
+        - button "评分遗忘" [ref=f1e883] [cursor=pointer]
+        - button "测验错词" [ref=f1e884] [cursor=pointer]
+        - button "专项词表" [ref=f1e885] [cursor=pointer]
+      - generic [ref=f1e886]:
+        - generic [ref=f1e887]:
+          - text: 英语词库
+          - combobox "英语词库" [ref=f1e888]:
+            - option "四级核心词汇" [selected]
+            - option "工作常用英语"
+        - generic [ref=f1e889]:
+          - text: 搜索单词或释义
+          - textbox "搜索单词或释义" [ref=f1e893]:
+            - /placeholder: 搜索单词或中文释义…
+        - button "搜索" [ref=f1e894] [cursor=pointer]
+    - generic [ref=f1e895]:
+      - region "单词列表" [ref=f1e896]:
+        - generic [ref=f1e897]:
+          - generic [ref=f1e898]:
+            - text: REVIEW QUEUE
+            - heading "需要再看一眼的词 8 个" [level=2] [ref=f1e899]
+          - button "学习选中 0 个" [disabled] [ref=f1e900]
+        - table [ref=f1e904]:
+          - rowgroup [ref=f1e905]:
+            - row [ref=f1e906]:
+              - columnheader [ref=f1e907]:
+                - checkbox "全选当前页单词" [ref=f1e908] [cursor=pointer]
+              - columnheader "单词 / 释义" [ref=f1e909]
+              - columnheader "状态" [ref=f1e910]
+              - columnheader "下次复习" [ref=f1e911]
+          - rowgroup [ref=f1e912]:
+            - row [ref=f1e913]:
+              - cell [ref=f1e914]:
+                - checkbox "选择 district" [ref=f1e915] [cursor=pointer]
+              - cell "district n. 区；区域；行政区" [ref=f1e916]:
+                - button "district" [ref=f1e917] [cursor=pointer]
+                - generic [ref=f1e918]: n. 区；区域；行政区
+              - cell "复习中 测验答错 2 次" [ref=f1e919]:
+                - generic [ref=f1e920]: 复习中
+                - generic [ref=f1e921]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e922]
+            - row [ref=f1e923]:
+              - cell [ref=f1e924]:
+                - checkbox "选择 word-9" [ref=f1e925] [cursor=pointer]
+              - cell "word-9 第 9 个词的释义" [ref=f1e926]:
+                - button "word-9" [ref=f1e927] [cursor=pointer]
+                - generic [ref=f1e928]: 第 9 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e929]:
+                - generic [ref=f1e930]: 复习中
+                - generic [ref=f1e931]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e932]
+            - row [ref=f1e933]:
+              - cell [ref=f1e934]:
+                - checkbox "选择 word-17" [ref=f1e935] [cursor=pointer]
+              - cell "word-17 第 17 个词的释义" [ref=f1e936]:
+                - button "word-17" [ref=f1e937] [cursor=pointer]
+                - generic [ref=f1e938]: 第 17 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e939]:
+                - generic [ref=f1e940]: 复习中
+                - generic [ref=f1e941]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e942]
+            - row [ref=f1e943]:
+              - cell [ref=f1e944]:
+                - checkbox "选择 word-25" [ref=f1e945] [cursor=pointer]
+              - cell "word-25 第 25 个词的释义" [ref=f1e946]:
+                - button "word-25" [ref=f1e947] [cursor=pointer]
+                - generic [ref=f1e948]: 第 25 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e949]:
+                - generic [ref=f1e950]: 复习中
+                - generic [ref=f1e951]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e952]
+            - row [ref=f1e953]:
+              - cell [ref=f1e954]:
+                - checkbox "选择 word-33" [ref=f1e955] [cursor=pointer]
+              - cell "word-33 第 33 个词的释义" [ref=f1e956]:
+                - button "word-33" [ref=f1e957] [cursor=pointer]
+                - generic [ref=f1e958]: 第 33 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e959]:
+                - generic [ref=f1e960]: 复习中
+                - generic [ref=f1e961]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e962]
+            - row [ref=f1e963]:
+              - cell [ref=f1e964]:
+                - checkbox "选择 word-41" [ref=f1e965] [cursor=pointer]
+              - cell "word-41 第 41 个词的释义" [ref=f1e966]:
+                - button "word-41" [ref=f1e967] [cursor=pointer]
+                - generic [ref=f1e968]: 第 41 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e969]:
+                - generic [ref=f1e970]: 复习中
+                - generic [ref=f1e971]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e972]
+            - row [ref=f1e973]:
+              - cell [ref=f1e974]:
+                - checkbox "选择 word-49" [ref=f1e975] [cursor=pointer]
+              - cell "word-49 第 49 个词的释义" [ref=f1e976]:
+                - button "word-49" [ref=f1e977] [cursor=pointer]
+                - generic [ref=f1e978]: 第 49 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e979]:
+                - generic [ref=f1e980]: 复习中
+                - generic [ref=f1e981]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e982]
+            - row [ref=f1e983]:
+              - cell [ref=f1e984]:
+                - checkbox "选择 word-57" [ref=f1e985] [cursor=pointer]
+              - cell "word-57 第 57 个词的释义" [ref=f1e986]:
+                - button "word-57" [ref=f1e987] [cursor=pointer]
+                - generic [ref=f1e988]: 第 57 个词的释义
+              - cell "复习中 测验答错 2 次" [ref=f1e989]:
+                - generic [ref=f1e990]: 复习中
+                - generic [ref=f1e991]: 测验答错 2 次
+              - cell "2026/10/18 12:00:00" [ref=f1e992]
+        - generic [ref=f1e993]:
+          - generic [ref=f1e994]: 每页 50 个 · 勾选仅保留当前页
+          - button "上一页" [disabled] [ref=f1e995]
+          - generic [ref=f1e996]: 1 / 1
+          - button "下一页" [disabled] [ref=f1e997]
+      - complementary "单词详情" [ref=f1e998]:
+        - generic [ref=f1e999]: WORD INSPECTOR
+        - heading "district" [level=2] [ref=f1e1003]
+        - generic [ref=f1e1004]: 复习中
+        - generic [ref=f1e1005]:
+          - button "朗读 district 英式发音" [ref=f1e1006] [cursor=pointer]:
+            - generic [ref=f1e1007]: 英
+            - code [ref=f1e1008]: /ˈdɪstrɪkt/
+          - button "朗读 district 美式发音" [ref=f1e1011] [cursor=pointer]:
+            - generic [ref=f1e1012]: 美
+            - code [ref=f1e1013]: /ˈdɪstrɪkt/
+        - paragraph [ref=f1e1016]: 使用浏览器语音，具体音色取决于本机语音包。
+        - generic [ref=f1e1017]:
+          - text: n.
+          - paragraph [ref=f1e1018]: n. 区；区域；行政区
+        - generic [ref=f1e1019]:
+          - heading "常用搭配" [level=3] [ref=f1e1020]
+          - paragraph [ref=f1e1021]: a business district
+          - paragraph [ref=f1e1022]: 商业区
+        - generic [ref=f1e1023]:
+          - heading "词库例句" [level=3] [ref=f1e1024]
+          - blockquote [ref=f1e1025]:
+            - text: The district is known for its quiet streets.
+            - generic [ref=f1e1026]: 这个地区以安静的街道而闻名。
+        - generic [ref=f1e1027]:
+          - heading "当前学习参数 SM2plus" [level=3] [ref=f1e1028]:
+            - text: 当前学习参数
+            - generic [ref=f1e1029]: SM2plus
+          - generic [ref=f1e1030]:
+            - generic [ref=f1e1031]:
+              - generic [ref=f1e1032]: 复习间隔
+              - strong [ref=f1e1033]: 3 天
+            - generic [ref=f1e1034]:
+              - generic [ref=f1e1035]: 难度系数
+              - strong [ref=f1e1036]: "0.34"
+          - paragraph [ref=f1e1037]:
+            - text: 下次复习
+            - strong [ref=f1e1038]: 2026/10/18 12:00:00
+          - paragraph [ref=f1e1039]: 这些是现有调度参数，不等同于 FSRS 的稳定性或记忆保持率。
+        - generic [ref=f1e1040]:
+          - button "通知重学" [ref=f1e1041] [cursor=pointer]
+          - button "移出专项词表" [ref=f1e1044] [cursor=pointer]
+        - generic [ref=f1e1045]:
+          - heading "最近学习记录" [level=3] [ref=f1e1046]
+          - list [ref=f1e1047]:
+            - listitem [ref=f1e1048]:
+              - generic [ref=f1e1049]: 2026/10/20 09:00:00
+              - strong [ref=f1e1050]: 测验 · 答错
+            - listitem [ref=f1e1051]:
+              - generic [ref=f1e1052]: 2026/10/20 09:00:00
+              - strong [ref=f1e1053]: 复习 · 没有印象
+        - paragraph [ref=f1e1054]: 仅展示当前词库已有内容。词频、星级、词根等扩展数据尚未接入。
+    - generic [ref=f1e189]:
+      - text: ToastFish · 本地学习工作台
+      - generic [ref=f1e190]: 记录从启用管理功能后开始积累；日语、五十音及自定义内容请使用托盘入口。

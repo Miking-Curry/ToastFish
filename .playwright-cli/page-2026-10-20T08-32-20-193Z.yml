@@ -1,0 +1,158 @@
+- generic [ref=f1e3]:
+  - complementary [ref=f1e4]:
+    - link "ToastFish 首页" [ref=f1e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=f1e6]: tf
+      - generic [ref=f1e7]:
+        - text: ToastFish
+        - generic [ref=f1e8]: 工作台
+        - generic [ref=f1e9]: 一点一滴，记住更多
+    - generic [ref=f1e10]: 学习空间
+    - navigation "管理导航" [ref=f1e11]:
+      - link "学习首页 Overview" [ref=f1e12] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f1e15]: 学习首页
+        - generic [ref=f1e16]: Overview
+      - link "学习记录 History" [ref=f1e17] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=f1e20]: 学习记录
+        - generic [ref=f1e21]: History
+      - link "我的单词 Vocabulary" [ref=f1e22] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=f1e25]: 我的单词
+        - generic [ref=f1e26]: Vocabulary
+      - link "复习与错词 Review" [ref=f1e27] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=f1e30]: 复习与错词
+        - generic [ref=f1e31]: Review
+      - link "词库与设置 Settings" [ref=f1e32] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f1e35]: 词库与设置
+        - generic [ref=f1e36]: Settings
+    - generic [ref=f1e37]:
+      - strong [ref=f1e40]: 数据留在本机
+      - paragraph [ref=f1e41]: 当前使用 SM2plus 调度。评分来自真实学习，不使用模拟保持率。
+      - text: WINDOWS NATIVE NOTIFICATIONS
+    - generic [ref=f1e42]: 本地服务已连接
+  - main [ref=f1e44]:
+    - generic [ref=f1e45]:
+      - generic [ref=f1e46]:
+        - generic [ref=f1e47]:
+          - text: YOUR LEARNING SPACE
+          - generic [ref=f1e48]: SM2plus
+        - heading "学习首页" [active] [level=1] [ref=f1e49]
+        - paragraph [ref=f1e50]: 从上次停下的地方，继续。
+      - generic [ref=f1e51]:
+        - generic [ref=f1e52]: 尚无未完成轮次
+        - button "通知背词" [ref=f1e54] [cursor=pointer]
+    - generic [ref=f1e57]:
+      - article [ref=f1e58]:
+        - generic [ref=f1e59]: 今日新学
+        - strong [ref=f1e63]: 16个词
+        - paragraph [ref=f1e64]: 首次开始学习的新词，按词去重
+      - article [ref=f1e65]:
+        - generic [ref=f1e66]: 今日复习
+        - strong [ref=f1e70]: 28个词
+        - paragraph [ref=f1e71]: 包含复习与重学，不重复计词数
+      - article [ref=f1e72]:
+        - generic [ref=f1e73]: 当前待复习
+        - strong [ref=f1e77]: 8个词
+        - link "查看到期词表 →" [ref=f1e78] [cursor=pointer]:
+          - /url: /reviews
+      - article [ref=f1e79]:
+        - generic [ref=f1e80]: 本周操作
+        - strong [ref=f1e84]: 218次
+        - paragraph [ref=f1e85]: 每次有效评分和测验都会记录
+    - generic [ref=f1e86]:
+      - generic [ref=f1e87]:
+        - generic [ref=f1e88]:
+          - generic [ref=f1e89]:
+            - text: WEEKLY ACTIVITY
+            - heading "每天一点，记忆多一点" [level=2] [ref=f1e90]
+          - generic [ref=f1e91]: 新学 复习
+        - generic [ref=f1e94]:
+          - generic [ref=f1e95]:
+            - text: 本周新学
+            - strong [ref=f1e96]: "66"
+            - text: 个
+          - generic [ref=f1e97]:
+            - text: 本周复习
+            - strong [ref=f1e98]: "102"
+            - text: 个
+          - generic [ref=f1e99]: 按词去重，与每日词数之和可能不同
+        - img "2026-10-18新学12个、复习19个；2026-10-19新学16个、复习28个；2026-10-20新学8个、复习23个；2026-10-21新学10个、复习14个；2026-10-22新学0个、复习0个；2026-10-23新学0个、复习0个；2026-10-24新学0个、复习0个" [ref=f1e100]:
+          - generic [ref=f1e101]:
+            - generic "2026-10-18 新学 12，复习 19" [ref=f1e103]
+            - text: 周一
+            - generic [ref=f1e106]: 12 / 19
+          - generic [ref=f1e107]:
+            - generic "2026-10-19 新学 16，复习 28" [ref=f1e109]
+            - text: 周二
+            - generic [ref=f1e112]: 16 / 28
+          - generic [ref=f1e113]:
+            - generic "2026-10-20 新学 8，复习 23" [ref=f1e115]
+            - text: 周三
+            - generic [ref=f1e118]: 8 / 23
+          - generic [ref=f1e119]:
+            - generic "2026-10-21 新学 10，复习 14" [ref=f1e121]
+            - text: 周四
+            - generic [ref=f1e124]: 10 / 14
+          - generic [ref=f1e125]:
+            - generic "2026-10-22 新学 0，复习 0" [ref=f1e127]
+            - text: 周五
+            - generic [ref=f1e128]: 0 / 0
+          - generic [ref=f1e129]:
+            - generic "2026-10-23 新学 0，复习 0" [ref=f1e131]
+            - text: 周六
+            - generic [ref=f1e132]: 0 / 0
+          - generic [ref=f1e133]:
+            - generic "2026-10-24 新学 0，复习 0" [ref=f1e135]
+            - text: 周日
+            - generic [ref=f1e136]: 0 / 0
+      - generic [ref=f1e137]:
+        - generic [ref=f1e141]: START A SMALL SESSION
+        - heading "准备好，开始这一轮" [level=2] [ref=f1e142]
+        - paragraph [ref=f1e143]: 留在通知里学习，在工作台里回顾。
+        - generic [ref=f1e144]:
+          - generic [ref=f1e145]:
+            - text: 英语词库
+            - combobox "英语词库" [ref=f1e146]:
+              - option "四级核心词汇" [selected]
+              - option "工作常用英语"
+          - generic [ref=f1e147]:
+            - text: 本轮新词数量
+            - spinbutton "本轮新词数量" [ref=f1e148]: "10"
+          - button "开始通知背词" [ref=f1e149] [cursor=pointer]
+        - paragraph [ref=f1e152]: 每轮仍会按现有规则加入复习词。有未完成轮次时，请先继续或结束。
+    - generic [ref=f1e153]:
+      - generic [ref=f1e154]:
+        - generic [ref=f1e155]:
+          - text: LIBRARY PROGRESS
+          - heading "每本词库，都有进展" [level=2] [ref=f1e156]
+        - link "管理词库 →" [ref=f1e157] [cursor=pointer]:
+          - /url: /settings
+      - generic [ref=f1e158]:
+        - article [ref=f1e159]:
+          - generic [ref=f1e160]: 内置词库
+          - heading "四级核心词汇" [level=3] [ref=f1e165]
+          - paragraph [ref=f1e166]:
+            - strong [ref=f1e167]: "186"
+            - text: / 1065 个已开始学习
+          - progressbar "四级核心词汇已开始学习进度" [ref=f1e168]
+          - generic [ref=f1e169]:
+            - generic [ref=f1e170]: 62 个进入复习
+            - generic [ref=f1e171]: 17%
+        - article [ref=f1e172]:
+          - generic [ref=f1e173]: 个人词库
+          - heading "工作常用英语" [level=3] [ref=f1e178]
+          - paragraph [ref=f1e179]:
+            - strong [ref=f1e180]: "36"
+            - text: / 120 个已开始学习
+          - progressbar "工作常用英语已开始学习进度" [ref=f1e181]
+          - generic [ref=f1e182]:
+            - generic [ref=f1e183]: 12 个进入复习
+            - generic [ref=f1e184]: 30%
+    - generic [ref=f1e185]: 记录开始于 2026/10/13 00:00:00用户数据：本地用户数据目录（浏览器测试使用内存模拟）
+    - generic [ref=f1e189]:
+      - text: ToastFish · 本地学习工作台
+      - generic [ref=f1e190]: 记录从启用管理功能后开始积累；日语、五十音及自定义内容请使用托盘入口。

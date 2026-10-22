@@ -1,0 +1,128 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ToastFish 首页" [ref=e5] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: tf
+      - generic [ref=e7]:
+        - text: ToastFish
+        - generic [ref=e8]: 一点一滴，记住更多
+    - navigation "管理导航" [ref=e9]:
+      - link "◉ 学习首页" [ref=e10] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: ◉
+        - text: 学习首页
+      - link "▤ 学习记录" [ref=e12] [cursor=pointer]:
+        - /url: /records
+        - generic [ref=e13]: ▤
+        - text: 学习记录
+      - link "Aa 我的单词" [ref=e14] [cursor=pointer]:
+        - /url: /words
+        - generic [ref=e15]: Aa
+        - text: 我的单词
+      - link "↻ 复习与错词" [ref=e16] [cursor=pointer]:
+        - /url: /reviews
+        - generic [ref=e17]: ↻
+        - text: 复习与错词
+      - link "⚙ 词库与设置" [ref=e18] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=e19]: ⚙
+        - text: 词库与设置
+    - generic [ref=e20]:
+      - text: 仅本机 · 数据保存在电脑
+      - paragraph [ref=e22]: 通知中学习，页面里回顾。
+  - main [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: YOUR LEARNING SPACE
+        - heading "学习首页" [level=1] [ref=e27]
+        - paragraph [ref=e28]: 从上次停下的地方，继续。
+      - generic [ref=e29]: 英语学习管理
+    - generic [ref=e30]:
+      - article [ref=e31]:
+        - text: 今日新学
+        - strong [ref=e32]: 6个词
+        - paragraph [ref=e33]: 第一次开始学习的新词
+      - article [ref=e34]:
+        - text: 今日复习
+        - strong [ref=e35]: 0个词
+        - paragraph [ref=e36]: 复习和重学，按词去重
+      - article [ref=e37]:
+        - text: 当前待复习
+        - strong [ref=e38]: 0个词
+        - paragraph [ref=e39]: 已经到达复习时间
+      - article [ref=e40]:
+        - text: 本周操作
+        - strong [ref=e41]: 10次
+        - paragraph [ref=e42]: 评分与测验提交次数
+    - generic [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - heading "本周，积累了多少" [level=2] [ref=e46]
+          - generic [ref=e47]: 新学 复习
+        - img "本周每日新学和复习词数柱状图" [ref=e50]:
+          - generic [ref=e51]:
+            - generic "2026-10-19 新学 6，复习 0" [ref=e53]
+            - text: 一
+            - generic [ref=e55]: "6"
+          - generic [ref=e56]:
+            - generic "2026-10-20 新学 0，复习 0" [ref=e58]
+            - text: 二
+            - generic [ref=e59]: "0"
+          - generic [ref=e60]:
+            - generic "2026-10-21 新学 0，复习 0" [ref=e62]
+            - text: 三
+            - generic [ref=e63]: "0"
+          - generic [ref=e64]:
+            - generic "2026-10-22 新学 0，复习 0" [ref=e66]
+            - text: 四
+            - generic [ref=e67]: "0"
+          - generic [ref=e68]:
+            - generic "2026-10-23 新学 0，复习 0" [ref=e70]
+            - text: 五
+            - generic [ref=e71]: "0"
+          - generic [ref=e72]:
+            - generic "2026-10-24 新学 0，复习 0" [ref=e74]
+            - text: 六
+            - generic [ref=e75]: "0"
+          - generic [ref=e76]:
+            - generic "2026-10-25 新学 0，复习 0" [ref=e78]
+            - text: 日
+            - generic [ref=e79]: "0"
+      - generic [ref=e80]:
+        - text: A LITTLE EVERY DAY
+        - heading "开始一轮学习" [level=2] [ref=e81]
+        - paragraph [ref=e82]: 选好词库，剩下的交给通知。
+        - generic [ref=e83]:
+          - text: 英语词库
+          - combobox "英语词库" [ref=e84]:
+            - option "四级核心词汇" [selected]
+            - option "我的英语"
+            - option "接口导入词库"
+        - generic [ref=e85]:
+          - text: 本轮新词数量
+          - spinbutton "本轮新词数量" [ref=e86]: "9"
+        - button "开始学习 →" [ref=e87] [cursor=pointer]
+        - paragraph [ref=e88]: 每轮还会按现有学习规则加入复习词。已有未完成轮次时，请先继续或结束。
+    - generic [ref=e89]:
+      - generic [ref=e90]:
+        - heading "词库进度" [level=2] [ref=e91]
+        - link "管理词库 →" [ref=e92] [cursor=pointer]:
+          - /url: /settings
+      - generic [ref=e93]:
+        - article [ref=e94]:
+          - heading "四级核心词汇" [level=3] [ref=e95]
+          - paragraph [ref=e96]: 0 / 12 个已开始学习
+          - progressbar [ref=e97]
+          - text: 0 个进入复习阶段
+        - article [ref=e98]:
+          - heading "我的英语" [level=3] [ref=e99]
+          - paragraph [ref=e100]: 1 / 2 个已开始学习
+          - progressbar [ref=e101]
+          - text: 1 个进入复习阶段
+        - article [ref=e102]:
+          - heading "接口导入词库" [level=3] [ref=e103]
+          - paragraph [ref=e104]: 0 / 12 个已开始学习
+          - progressbar [ref=e105]
+          - text: 0 个进入复习阶段
+    - paragraph [ref=e106]: 记录开始于 2026/10/19 15:38:42 · 用户数据：D:\develop\projects\ToastFish\bin\ManagementDebug\checks-5a448fa75c984e1f820969f151093c1b\user
+    - generic [ref=e107]: ToastFish · 学习记录从启用管理功能后开始积累。日语、五十音及自定义内容仍使用托盘入口。

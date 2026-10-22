@@ -1,0 +1,10 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="D:\develop\projects\ToastFish\ToastFish.csproj" />
+  <ItemGroup><Content Include="Web\dist\assets\old-hash.js"><Link>Web\assets\old-hash.js</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content></ItemGroup>
+  <Target Name="ChangeAssetAfterEvaluation" BeforeTargets="RefreshManagementWebAssets">
+    <Move SourceFiles="Web\dist\assets\old-hash.js" DestinationFiles="Web\dist\assets\new-hash.js" />
+  </Target>
+  <Target Name="CheckWebAssets" DependsOnTargets="AssignTargetPaths">
+    <WriteLinesToFile File="asset-items.txt" Lines="@(Content->'%(Identity)|%(Link)')" Overwrite="true" />
+  </Target>
+</Project>
