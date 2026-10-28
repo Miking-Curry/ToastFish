@@ -17,6 +17,7 @@ namespace ToastFish.Model.PushControl
         private static Action<string> beforeSubmit;
         private static bool paused;
         public static bool IsActive { get; private set; }
+        public static bool HasCurrent => input.Current != null;
 
         static LearningSession()
         {

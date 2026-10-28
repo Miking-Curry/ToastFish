@@ -1,4 +1,4 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +17,7 @@ using ToastFish.Model.StartWithWindows;
 using System.IO;
 using System.Windows.Xps.Packaging;
 using System.Windows.Input;
+using ToastFish.Model.Management;
 
 namespace ToastFish
 {
@@ -27,9 +28,10 @@ namespace ToastFish
     {
         
         ToastFishModel Vm = new ToastFishModel();
+        private ManagementServer managementServer;
+        private readonly List<HotKey> hotKeys = new List<HotKey>();
         Select Se = new Select();
         PushWords pushWords = new PushWords();
-        Thread thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
         Dictionary<string, string> TablelDictionary = new Dictionary<string, string>(){
         {"CET4_1", "四级核心词汇"},{"CET4_3", "四级完整词汇"},{"CET6_1", "六级核心词汇"},
         {"CET6_3", "六级完整词汇"},{"GMAT_3", "GMAT词汇"},{"GRE_2", "GRE词汇"},
@@ -47,13 +49,21 @@ namespace ToastFish
             SetNotifyIcon();
             this.Visibility = Visibility.Hidden;
             Se.LoadGlobalConfig();
+            StudyStore.ApplySettings(StudyStore.Default.Settings());
             ContextMenu();
-            new HotKey(Key.Oem3, KeyModifier.Alt , OnHotKeyHandler);
-            new HotKey(Key.D1, KeyModifier.Alt , OnHotKeyHandler);
-            new HotKey(Key.D2, KeyModifier.Alt , OnHotKeyHandler);
-            new HotKey(Key.D3, KeyModifier.Alt , OnHotKeyHandler);
-            new HotKey(Key.D4, KeyModifier.Alt , OnHotKeyHandler);
-            new HotKey(Key.Q, KeyModifier.Alt, OnHotKeyHandler);
+            foreach (var key in new[] { Key.Oem3, Key.D1, Key.D2, Key.D3, Key.D4, Key.Q })
+                hotKeys.Add(new HotKey(key, KeyModifier.Alt, OnHotKeyHandler));
+            Closed += (sender, args) =>
+            {
+                LearningSession.Shutdown();
+                managementServer?.Dispose();
+                foreach (var hotKey in hotKeys) hotKey.Dispose();
+                Se.DataBase.Dispose();
+                Vm.notifyIcon.Dispose();
+            };
+#if DEBUG
+            Dispatcher.BeginInvoke(new Action(OpenManagement));
+#endif
 
             // 谜之bug，如果不先播放一段音频，那么什么声音都播不出来。
             // 所以播个没声音的音频先。
@@ -64,6 +74,11 @@ namespace ToastFish
         private void OnHotKeyHandler(HotKey hotKey)
         {
             string key = hotKey.Key.ToString();
+            if (LearningSession.HasCurrent && hotKey.Key != Key.Q)
+            {
+                LearningSession.OnKey(hotKey.Key == Key.Oem3 ? "S" : key.Substring(1));
+                return;
+            }
             Debug.WriteLine("key pressed:" + key);
             switch (key) 
             {
@@ -136,6 +151,31 @@ namespace ToastFish
         }
 
         #region 托盘右键菜单
+
+        private bool CanChangeStudy()
+        {
+            try { StudyCoordinator.Default.RequireIdle(); return true; }
+            catch (InvalidOperationException ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message, "ToastFish");
+                return false;
+            }
+        }
+
+        private void OpenManagement()
+        {
+            try
+            {
+                if (managementServer == null)
+                    managementServer = new ManagementServer(StudyStore.Default, StudyCoordinator.Default,
+                        Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Web"));
+                managementServer.OpenBrowser();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("无法打开学习管理：" + ex.Message, "ToastFish");
+            }
+        }
 
         System.Windows.Forms.ToolStripMenuItem Begin = new System.Windows.Forms.ToolStripMenuItem();
         System.Windows.Forms.ToolStripMenuItem Settings = new System.Windows.Forms.ToolStripMenuItem();
@@ -265,39 +305,6 @@ namespace ToastFish
 
 
 
-            if (Select.TABLE_NAME == "CET4_1")
-                CET4_1.PerformClick();
-            else if (Select.TABLE_NAME == "CET4_3")
-                CET4_3.PerformClick();
-            else if (Select.TABLE_NAME == "CET6_1")
-                CET6_1.PerformClick();
-            else if (Select.TABLE_NAME == "CET6_3")
-                CET6_3.PerformClick();
-            else if (Select.TABLE_NAME == "GMAT_3")
-                GMAT_3.PerformClick();
-            else if (Select.TABLE_NAME == "GRE_2")
-                GRE_2.PerformClick();
-            else if (Select.TABLE_NAME == "IELTS_3")
-                IELTS_3.PerformClick();
-            else if (Select.TABLE_NAME == "TOEFL_2")
-                TOEFL_2.PerformClick();
-            else if (Select.TABLE_NAME == "SAT_2")
-                SAT_2.PerformClick();
-            else if (Select.TABLE_NAME == "KaoYan_1")
-                KaoYan_1.PerformClick();
-            else if (Select.TABLE_NAME == "KaoYan_2")
-                KaoYan_2.PerformClick();
-            else if (Select.TABLE_NAME == "Level4_1")
-                Level4_1.PerformClick();
-            else if (Select.TABLE_NAME == "Level4luan_2")
-                Level4luan_2.PerformClick();
-            else if (Select.TABLE_NAME == "Level8_1")
-                Level8_1.PerformClick();
-            else if (Select.TABLE_NAME == "Level8luan_2")
-                Level8luan_2.PerformClick();
-            else if (Select.TABLE_NAME == "Goin")
-                Goin.PerformClick();
-
             Cms.Items.Add(Begin);
             //Cms.Items.Add(SetNumber);
             //Cms.Items.Add(SetEngType);
@@ -339,62 +346,53 @@ namespace ToastFish
             ((ToolStripDropDownItem)Cms.Items[6]).DropDownItems.Add(Shortcuts);
             ((ToolStripDropDownItem)Cms.Items[6]).DropDownItems.Add(Use);
             ((ToolStripDropDownItem)Cms.Items[6]).DropDownItems.Add(Site);
-            ((ToolStripDropDownItem)Cms.Items[6]).DropDownItems.Add(Pdf);            
+            ((ToolStripDropDownItem)Cms.Items[6]).DropDownItems.Add(Pdf);
+            Cms.Items.Add(new ToolStripSeparator());
+            Cms.Items.Add(new ToolStripMenuItem("学习管理", null, (sender, args) => OpenManagement()));
+            foreach (ToolStripMenuItem item in SelectBook.DropDownItems)
+                item.Checked = TablelDictionary.ContainsKey(Select.TABLE_NAME) && item.Text == TablelDictionary[Select.TABLE_NAME];
+
         }
 
         private void Begin_Click(object sender, EventArgs e)
         {
-            if (!System.IO.Directory.Exists("Log"))  {
-                System.IO.Directory.CreateDirectory("Log");
-            }
-           // System.IO.Directory.CreateDirectory("Log");
-
-            var state = thread.ThreadState;
-
-            WordType Words = new WordType();
-            Words.Number = Select.WORD_NUMBER;
-
-            if (state == System.Threading.ThreadState.WaitSleepJoin || state == System.Threading.ThreadState.Stopped)
+            try
             {
-                thread.Abort();
-                while (thread.ThreadState != System.Threading.ThreadState.Aborted)
+                if (StudyStore.Default.Pending() != null)
                 {
-                    Thread.Sleep(100);
+                    StudyCoordinator.Default.Resume();
+                    return;
                 }
-                if(Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.OrderGoin));
-                else if(Select.TABLE_NAME == "StdJp_Mid")
-                    thread = new Thread(new ParameterizedThreadStart(PushJpWords.Recitation));
-                //else if (Select.TABLE_NAME == "自定义英语")
-                //    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-                else
-                    thread = new Thread(new ParameterizedThreadStart(PushWords.RecitationSM2));
-
-                thread.Start(Words);
+                if (LearningSession.IsActive) { LearningSession.Restore(); return; }
+                if (StudyStore.BuiltInBooks.ContainsKey(Select.TABLE_NAME))
+                {
+                    StudyCoordinator.Default.Start(StudyStore.Default.Settings().BookId, Select.WORD_NUMBER);
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                if (Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.OrderGoin));
-                else if (Select.TABLE_NAME == "StdJp_Mid")
-                    thread = new Thread(new ParameterizedThreadStart(PushJpWords.Recitation));
-                //else if (Select.TABLE_NAME == "自定义英语")
-                //    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-                else
-                    thread = new Thread(new ParameterizedThreadStart(PushWords.RecitationSM2));
-                
-                thread.Start(Words);
+                System.Windows.MessageBox.Show("无法开始学习：" + ex.Message, "ToastFish");
+                return;
             }
+            var words = new WordType { Number = Select.WORD_NUMBER };
+            LearningSession.Start(() =>
+            {
+                if (Select.TABLE_NAME == "Goin") PushGoinWords.OrderGoin(words);
+                else PushJpWords.Recitation(words);
+            });
         }
 
         private void SetNumber_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             Thread thread = new Thread(new ThreadStart(pushWords.SetWordNumber));
             thread.Start();
         }
 
         private void SetEngType_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             Thread thread = new Thread(new ThreadStart(pushWords.SetEngType));
             thread.Start();
         }
@@ -404,6 +402,7 @@ namespace ToastFish
 
         private void ImportWords_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             OpenFileDialog Dialog = new OpenFileDialog();
             Dialog.Filter = "xlsx files (*.xlsx)|*.xlsx|xls files (*.xls)|*.xls";
             if (Dialog.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
@@ -423,8 +422,10 @@ namespace ToastFish
             {
                 if (typeObj == typeWord)
                 {
-                    Words.WordList = (List<Word>)lstObj;
-                    Select.TABLE_NAME = "GRE_2";
+                    string book = StudyStore.Default.ImportEnglish(Path.GetFileNameWithoutExtension(FileName),
+                        File.ReadAllBytes(FileName), FileName);
+                    StudyCoordinator.Default.Start(book, Select.WORD_NUMBER);
+                    return;
                 }
                 else if (typeObj == typeJpWord)
                 {
@@ -452,47 +453,16 @@ namespace ToastFish
             }
             
 
-            var state = thread.ThreadState;
-
-            if (state == System.Threading.ThreadState.WaitSleepJoin || state == System.Threading.ThreadState.Stopped)
+            LearningSession.Start(() =>
             {
-                thread.Abort();
-                while (thread.ThreadState != System.Threading.ThreadState.Aborted)
-                {
-                    Thread.Sleep(100);
-                }
-                if (Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.OrderGoin));
-                else if (Select.TABLE_NAME == "StdJp_Mid")
-                    thread = new Thread(new ParameterizedThreadStart(PushJpWords.Recitation));
-                //else if (Select.TABLE_NAME == "自定义英语")
-                //    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-                else if (Select.TABLE_NAME == "自定义")
-                    thread = new Thread(new ParameterizedThreadStart(PushCustomizeWords.Recitation));
-                else
-                    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-
-                thread.Start(Words);
-            }
-            else
-            {
-                if (Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.OrderGoin));
-                else if (Select.TABLE_NAME == "StdJp_Mid")
-                    thread = new Thread(new ParameterizedThreadStart(PushJpWords.Recitation));
-                //else if (Select.TABLE_NAME == "自定义英语")
-                //    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-                else if (Select.TABLE_NAME == "自定义")
-                    thread = new Thread(new ParameterizedThreadStart(PushCustomizeWords.Recitation));
-                else
-                    thread = new Thread(new ParameterizedThreadStart(PushWords.Recitation));
-
-                thread.Start(Words);
-            }
+                if (Select.TABLE_NAME == "StdJp_Mid") PushJpWords.Recitation(Words);
+                else PushCustomizeWords.Recitation(Words);
+            });
         }
 
         private void SelectBook_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             ToolStripMenuItem curitem = sender as ToolStripMenuItem;
             if (curitem != null && curitem.OwnerItem !=null)
             {
@@ -560,6 +530,12 @@ namespace ToastFish
                 TempName = "Goin";
             Select.TABLE_NAME = TempName;
             Se.UpdateBookName(TempName);
+            if (StudyStore.BuiltInBooks.ContainsKey(TempName))
+            {
+                var settings = StudyStore.Default.Settings();
+                settings.BookId = TempName;
+                StudyStore.Default.SaveSettings(settings);
+            }
             Se.UpdateTableCount();
             //if (sender.ToString() == "顺序五十音")
             //{
@@ -575,63 +551,34 @@ namespace ToastFish
 
         private void RandomWordTest_Click(object sender, EventArgs e)
         {
-            var state = thread.ThreadState;
-            if (state == System.Threading.ThreadState.WaitSleepJoin || state == System.Threading.ThreadState.Stopped)
+            if (!CanChangeStudy()) return;
+            try
             {
-                thread.Abort();
-                while (thread.ThreadState != System.Threading.ThreadState.Aborted)
-                {
-                    Thread.Sleep(100);
-                }
+                var settings = StudyStore.Default.Settings();
+                StudyCoordinator.Default.Start(settings.BookId, settings.Number, "test");
             }
-            if (Select.TABLE_NAME == "StdJp_Mid" || Select.TABLE_NAME == "Goin")
-                Select.TABLE_NAME = "GRE_2";
-            thread = new Thread(new ParameterizedThreadStart(pushWords.UnorderWord));
-            thread.Start(Select.WORD_NUMBER);
+            catch (Exception ex) { System.Windows.MessageBox.Show(ex.Message, "ToastFish"); }
         }
 
         private void RandomGoinTest_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             Select.TABLE_NAME = "Goin";
             Se.UpdateBookName("Goin");
-            var state = thread.ThreadState;
-            if (state == System.Threading.ThreadState.WaitSleepJoin || state == System.Threading.ThreadState.Stopped)
-            {
-                thread.Abort();
-                while (thread.ThreadState != System.Threading.ThreadState.Aborted)
-                {
-                    Thread.Sleep(100);
-                }
-                if (Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.UnorderGoin));
-                thread.Start(Select.WORD_NUMBER);
-            }
-            else
-            {
-                if (Select.TABLE_NAME == "Goin")
-                    thread = new Thread(new ParameterizedThreadStart(PushGoinWords.UnorderGoin));
-                thread.Start(Select.WORD_NUMBER);
-            }
+            LearningSession.Start(() => PushGoinWords.UnorderGoin(Select.WORD_NUMBER));
         }
 
         private void RandomJpWordTest_Click(object sender, EventArgs e)
         {
-            var state = thread.ThreadState;
-            if (state == System.Threading.ThreadState.WaitSleepJoin || state == System.Threading.ThreadState.Stopped)
-            {
-                thread.Abort();
-                while (thread.ThreadState != System.Threading.ThreadState.Aborted)
-                {
-                    Thread.Sleep(100);
-                }
-            }
+            if (!CanChangeStudy()) return;
             Select.TABLE_NAME = "StdJp_Mid";
-            thread = new Thread(new ParameterizedThreadStart(PushJpWords.UnorderWord));
-            thread.Start(Select.WORD_NUMBER);
+            Se.UpdateBookName("StdJp_Mid");
+            LearningSession.Start(() => PushJpWords.UnorderWord(Select.WORD_NUMBER));
         }
 
         public  void ResetLearingStatus_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
            string TableName;
            bool isok= TablelDictionary.TryGetValue(Select.TABLE_NAME, out TableName);
             if (!isok) {
@@ -645,7 +592,9 @@ namespace ToastFish
             {
                
                 try {
-                    Se.ResetTableCount();
+                    if (StudyStore.BuiltInBooks.ContainsKey(Select.TABLE_NAME))
+                        StudyStore.Default.Reset(Select.TABLE_NAME);
+                    else Se.ResetTableCount();
                     pushWords.PushMessage($"重置{TableName}完成！");
                     //System.Windows.Forms.MessageBox.Show($"重置{TableName}完成！");
 
@@ -664,6 +613,7 @@ namespace ToastFish
 
         private void AutoPlay_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             //sender as ToolStripMenuItem).Checked = !(sender as ToolStripMenuItem).Checked;
             if (Select.AUTO_PLAY == 0)
             {
@@ -676,10 +626,12 @@ namespace ToastFish
                 (sender as ToolStripMenuItem).Checked = false;
             }
             Se.UpdateGlobalConfig();
+            StudyStore.Default.SyncLegacySettings();
         }
 
         private void AutoLog_Click(object sender, EventArgs e)
         {
+            if (!CanChangeStudy()) return;
             //(sender as ToolStripMenuItem).Checked = !(sender as ToolStripMenuItem).Checked;
             if (Select.AUTO_LOG == 0)
             {
@@ -692,6 +644,7 @@ namespace ToastFish
                 (sender as ToolStripMenuItem).Checked = false;
             }
             Se.UpdateGlobalConfig();
+            StudyStore.Default.SyncLegacySettings();
         }
 
         private void HowToUse_Click(object sender, EventArgs e)
@@ -709,7 +662,8 @@ namespace ToastFish
         private void ExitApp_Click(object sender, EventArgs e)
         {
             ToastNotificationManagerCompat.History.Clear();
-            Environment.Exit(0);
+            Close();
+            System.Windows.Application.Current.Shutdown();
         }
 
         private void Start_Click(object sender, EventArgs e)

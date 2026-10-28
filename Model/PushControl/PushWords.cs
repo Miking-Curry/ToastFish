@@ -129,6 +129,7 @@ namespace ToastFish.Model.PushControl
                 ToastNotificationManagerCompat.OnActivated += toastArgs =>
                 {
                     ToastArguments Args = ToastArguments.Parse(toastArgs.Argument);
+                    if (Args.Contains("learning")) return;
                     string Status = "";
                     try
                     {
@@ -192,6 +193,7 @@ namespace ToastFish.Model.PushControl
                 ToastNotificationManagerCompat.OnActivated += toastArgs =>
                 {
                     ToastArguments Args = ToastArguments.Parse(toastArgs.Argument);
+                    if (Args.Contains("learning")) return;
                     string Status = "";
                     try
                     {
@@ -272,6 +274,7 @@ namespace ToastFish.Model.PushControl
                 ToastNotificationManagerCompat.OnActivated += toastArgs =>
                 {
                     ToastArguments Args = ToastArguments.Parse(toastArgs.Argument);
+                    if (Args.Contains("learning")) return;
                     string Status = "";
                     try
                     {
@@ -304,6 +307,7 @@ namespace ToastFish.Model.PushControl
             ToastNotificationManagerCompat.OnActivated += toastArgs =>
             {
                 ToastArguments Args = ToastArguments.Parse(toastArgs.Argument);
+                if (Args.Contains("learning")) return;
                 string Status = "";
                 try
                 {
@@ -357,6 +361,7 @@ namespace ToastFish.Model.PushControl
                     Select.WORD_NUMBER = int.Parse(WORD_NUMBER_STRING);
                     Select Temp = new Select();
                     Temp.UpdateNumber(Select.WORD_NUMBER);
+                    Management.StudyStore.Default.SyncLegacySettings();
                     PushMessage("已设置单词数量为：" + WORD_NUMBER_STRING);
                 }
             }
@@ -400,6 +405,7 @@ namespace ToastFish.Model.PushControl
                     PushMessage("已设置英语类型为：" + rst);
                     Select Temp = new Select();
                     Temp.UpdateGlobalConfig();
+                    Management.StudyStore.Default.SyncLegacySettings();
                     //Select.UpdateGlobalConfig();
                 }
             }

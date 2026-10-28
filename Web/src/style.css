@@ -107,5 +107,6 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 .word-inspector { max-height: calc(100dvh - 44px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: #a5c8b4 transparent; }
 .timeline-chart svg { height: 220px; }
+.overdue-review { margin-top: 14px; width: 100%; }
 @media(max-width:1080px) { .word-inspector { max-height: none; overflow: visible; } }
 @media(max-width:740px) { .timeline-chart svg { height: 190px; } }

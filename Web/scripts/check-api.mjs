@@ -52,6 +52,14 @@ await action(async () => false, '不应出现')
 check(notice.value === '', 'cancel is not success')
 await action(async () => { throw new Error('保存失败') }, '不应出现')
 check(failure.value === '保存失败' && notice.value === '', 'failure is not success')
+globalThis.fetch = async (url, options) => {
+  check(url === '/api/sessions/start', 'due review uses existing session endpoint')
+  assert.deepEqual(JSON.parse(options.body), { bookId: 'KaoYan_1', number: 10, mode: 'due' }); checks++
+  return Response.json({ error: '请先继续或结束未完成的学习。' }, { status: 409 })
+}
+await action(() => api('sessions/start', { bookId: 'KaoYan_1', number: 10, mode: 'due' }), '已开始到期复习')
+check(failure.value === '请先继续或结束未完成的学习。' && notice.value === '', 'unfinished round blocks due review without claiming success')
+check(mutations.value === 0, 'due review conflict releases request guard')
 check(date(null) === '—' && date('invalid-time') === '日期不可用', 'missing and invalid dates')
 check(query({ q: 'a&b', page: 2 }) === 'q=a%26b&page=2', 'encoded query')
 globalThis.fetch = async () => new Response('<html>not a workbook</html>', { headers: { 'content-type': 'text/html' } })

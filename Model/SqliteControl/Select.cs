@@ -34,11 +34,12 @@ namespace ToastFish.Model.SqliteControl
         /// </summary>
         SQLiteConnection ConnectToDatabase()
         {
-            //var databasePath = @"Data Source=./Resources/inami.db;Version=3";
-            //var databasePath = @"Data Source="+System.IO.Directory.GetCurrentDirectory() + @"\Resources\inami.db;Version=3";
-            string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string databasePath = @"Data Source=" + System.IO.Path.GetDirectoryName(strExeFilePath) + @"\Resources\inami.db;Version=3";
-            return new SQLiteConnection(databasePath);
+            return new SQLiteConnection(new SQLiteConnectionStringBuilder
+            {
+                DataSource = Management.StudyStore.Default.DatabasePath,
+                Version = 3,
+                FailIfMissing = true
+            }.ToString());
         }
 
         /// <summary>

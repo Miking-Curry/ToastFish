@@ -17,6 +17,15 @@ namespace ToastFish
     /// </summary>
     public partial class App : Application
     {
-
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            if (e.Args.Length == 2 && e.Args[0] == "--authorize-local")
+            {
+                StartupUri = null;
+                Shutdown(Model.Management.ManagementServer.Authorize(e.Args[1]));
+                return;
+            }
+            base.OnStartup(e);
+        }
     }
 }

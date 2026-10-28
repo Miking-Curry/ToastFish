@@ -116,6 +116,8 @@
   <ItemGroup>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Speech" />
@@ -138,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Management\*.cs" />
+    <Compile Include="Model\PushControl\LearningInput.cs" />
+    <Compile Include="Model\PushControl\LearningSession.cs" />
+    <Compile Include="Model\PushControl\LearningToast.cs" />
     <Compile Include="Model\Log\CreateLog.cs" />
     <Compile Include="Model\Mp3\DownloadMp3.cs" />
     <Compile Include="Model\Mp3\PlayMp3.cs" />
@@ -591,5 +597,17 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <Target Name="RefreshManagementWebAssets" BeforeTargets="AssignTargetPaths" Condition="'$(DesignTimeBuild)' != 'true'">
+    <Error Condition="!Exists('Web\dist\index.html')" Text="前端尚未构建，请在 Web 目录执行 pnpm install --frozen-lockfile 和 pnpm run build。" />
+    <ItemGroup>
+      <!-- Vite 重建会替换哈希文件，每次构建都需重新扫描。 -->
+      <Content Remove="@(Content)" Condition="$([System.String]::Copy('%(Content.Identity)').StartsWith('Web\dist\'))" />
+      <_ManagementWebAsset Include="Web\dist\**\*" />
+      <Content Include="@(_ManagementWebAsset)">
+        <Link>Web\%(_ManagementWebAsset.RecursiveDir)%(_ManagementWebAsset.Filename)%(_ManagementWebAsset.Extension)</Link>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+  </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

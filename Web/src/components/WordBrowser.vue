@@ -11,6 +11,8 @@ const loading = ref(false), detailLoading = ref(false), overviewLoading = ref(fa
 const tabs = [['review', '全部计划'], ['due', '到期复习'], ['forgotten', '评分遗忘'], ['wrong', '测验错词'], ['starred', '专项词表']]
 const allVisible = computed(() => result.value?.items.length > 0 && result.value.items.every((w: any) => selected.value.includes(w.key)))
 const windowLabel = computed(() => overview.value?.buckets.find((b: any) => b.id === window.value)?.label ?? '')
+const overdueCount = computed(() => overview.value?.buckets.find((b: any) => b.id === 'overdue')?.count ?? 0)
+const reviewingDue = ref(false), reviewNumber = ref(10)
 let generation = 0, detailGeneration = 0, overviewGeneration = 0
 let bootstrapGeneration = 0
 const show = async (key: string) => {
@@ -68,11 +70,20 @@ const study = (keys: string[] = selected.value) => action(async () => {
   if (keys.length > 100) throw new Error('每轮最多选择 100 个单词。')
   await api('sessions/start', { bookId: book.value, number: keys.length, mode: 'selected', keys })
 }, '已请求原生通知学习，请查看桌面右下角。已有轮次时请先继续或结束。')
+const reviewDue = () => action(async () => {
+  if (reviewingDue.value) return false
+  if (!book.value || !overdueCount.value) throw new Error('当前词库没有已到期的复习单词。')
+  reviewingDue.value = true
+  try {
+    await api('sessions/start', { bookId: book.value, number: reviewNumber.value, mode: 'due' })
+  } finally { reviewingDue.value = false }
+}, '已开始到期复习，请查看桌面右下角通知。')
 const bootstrap = () => action(async () => {
   const current = ++bootstrapGeneration
   const [list, settings] = await Promise.all([api('books'), api('settings')])
   if (current !== bootstrapGeneration) return
   books.value = list
+  reviewNumber.value = settings.Number
   book.value = list.some((b: any) => b.id === settings.BookId) ? settings.BookId : (list[0]?.id ?? '')
   await Promise.all([load(), loadOverview()])
 })
@@ -81,7 +92,12 @@ onMounted(bootstrap)
 onUnmounted(() => { generation++; detailGeneration++; overviewGeneration++; bootstrapGeneration++ })
 </script>
 <template>
-  <ReviewTimeline v-if="review" :overview="overview" :selected="window" :loading="overviewLoading" @select="selectWindow"/>
+  <ReviewTimeline v-if="review" :overview="overview" :selected="window" :loading="overviewLoading" @select="selectWindow">
+    <template #actions>
+      <button class="primary overdue-review" :disabled="!book || !overdueCount || overviewLoading || reviewingDue || mutations > 0" @click="reviewDue">{{ reviewingDue ? '正在启动…' : `复习已到期 ${overdueCount} 个` }}</button>
+      <p>每轮最多 {{ reviewNumber }} 个，优先复习最早到期的词。有未完成轮次时，请先在首页继续或结束。</p>
+    </template>
+  </ReviewTimeline>
   <div v-if="overviewError" class="alert warning" role="status"><span>{{ overviewError }} 单词列表仍可使用；时间分布需要配套的新版本本地服务。</span><button @click="loadOverview">重试</button></div>
   <section class="panel search-panel">
     <div v-if="review" class="tabs" aria-label="复习类型"><button v-for="tab in tabs" :key="tab[0]" :aria-pressed="filter === tab[0]" :class="{selected: filter === tab[0]}" @click="selectTab(tab[0]!)">{{ tab[1] }}</button></div>
